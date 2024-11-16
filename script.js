@@ -119,11 +119,21 @@ addressInput.addEventListener("input", (event)=>{
 
 
 chekoutBtn.addEventListener("click", ()=>{
-        // const isOpen = checkRastauranteOpen();
-        // if(!isOpen){
-        //     alert("RESTAURANTE FECHADO NO MOMENTO")
-        //     return;
-        // }
+        const isOpen = checkRastauranteOpen();
+        if(!isOpen){
+            Toastify({  text: "O restaurante está fechado!",
+                duration: 3000,
+               
+              
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: "linear-gradient(to right, #00b09b, #96c93d)",
+                },}).showToast();
+                return;
+        }
 
 
 
@@ -143,6 +153,8 @@ chekoutBtn.addEventListener("click", ()=>{
     const phone = "+5585997209670"
 
     window.open(`https://wa.me/${phone}?text=${message} Endereço ${addressInput.value}`,"_blank")
+    cart = []
+    updateCartModal()
 })
 
 function checkRastauranteOpen(){
